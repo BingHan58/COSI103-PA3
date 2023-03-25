@@ -1,3 +1,21 @@
+'''
+transaction.py is an Object-Relational Mapping (ORM) module that interacts with the tracker.db database.
+
+The ORM will map SQL rows with the schema
+(id, date, description, amount, category_id)
+to Python Dictionaries as follows:
+{id:1, date:'2022-03-28', description:'Grocery shopping', amount: 100.00, category_id:1}
+
+
+In place of SQL queries, we will have method calls.
+
+This app will store the data in a SQLite database named tracker.db
+
+The class Transaction provides various methods for accessing and manipulating data, including adding and modifying categories, adding and deleting transactions, and summarizing transactions by date, month, year, or category.
+
+In addition, the ORM includes a method runQuery() that connects to the database, executes a query with parameters, fetches the rows, and closes the connection. The method catches and ignores any errors that may occur during the database interaction.
+'''
+
 import sqlite3
 import os
 
