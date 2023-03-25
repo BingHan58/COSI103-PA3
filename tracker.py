@@ -34,8 +34,16 @@ def process_args(tracker, arglist):
         tracker.add_category(arglist[1])
     elif arglist[0] == "3":
         tracker.modify_category(arglist[1], arglist[2])
+    elif arglist[0] == "4":
+        for transaction in tracker.show_transactions():
+             print(transaction)
+    elif arglist[0] == "5":
+        tracker.add_transaction(arglist[1], arglist[2], arglist[3], arglist[4])
+    elif arglist[0] == "6":
+        tracker.delete_transaction(arglist[1])
     
-    '''Don't forget to add other features from 4-10'''
+        '''Don't forget to add other features from 7-10'''
+    
     
     
     
