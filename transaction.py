@@ -36,7 +36,31 @@ class Transaction:
                             amount REAL NOT NULL,
                             category_id INTEGER,
                             FOREIGN KEY (category_id) REFERENCES categories (id))''', ())
+
         
+     # features created by Yingshan Hu
+     def show_categories(self):
+        return self.runQuery("SELECT * FROM categories", ())
+    
+     def add_category(self, name):
+        self.runQuery("INSERT INTO categories(name) VALUES(?)", (name,))
+        
+     def modify_category(self, old_name, new_name):
+        self.runQuery("UPDATE categories SET name = ? WHERE name = ?", (new_name, old_name))  
+        
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
         
      def runQuery(self, query, params):
         try:
