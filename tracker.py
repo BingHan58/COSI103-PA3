@@ -45,6 +45,12 @@ def process_args(tracker, arglist):
         print(arglist, "is not implemented")
         print_usage()
 
+        
+def main():
+    '''Read the command args and process them.'''
+    tracker = Transaction()
+    
+    
 
 if __name__ == '__main__':
     main()
