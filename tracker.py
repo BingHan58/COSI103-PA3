@@ -21,6 +21,29 @@ def print_usage():
 ''')
 
 
+    
+def process_args(tracker, arglist):
+    '''Examine args and make appropriate calls to Transaction class.'''
+    if arglist == []:
+        print_usage()
+    elif arglist[0] == "0":
+        return
+    elif arglist[0] == "1":
+        tracker.show_categories()
+    elif arglist[0] == "2":
+        tracker.add_category(arglist[1])
+    elif arglist[0] == "3":
+        tracker.modify_category(arglist[1], arglist[2])
+    
+    '''Don't forget to add other features from 4-10'''
+    
+    
+    
+    elif arglist[0] == "11":
+        print_usage()
+    else:
+        print(arglist, "is not implemented")
+        print_usage()
 
 
 if __name__ == '__main__':
