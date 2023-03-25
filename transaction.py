@@ -49,11 +49,22 @@ class Transaction:
      # features created by Yingshan Hu
      def modify_category(self, old_name, new_name):
         self.runQuery("UPDATE categories SET name = ? WHERE name = ?", (new_name, old_name))  
-        
-      
+              
+     # features created by Bing Han
+     def show_transactions(self):
+        return self.runQuery("SELECT * FROM transactions", ())
+
+     # features created by Bing Han
+     def add_transaction(self, amount, category, date, description):
+        self.runQuery("INSERT INTO transactions (amount, category, date, description) VALUES (?, ?, ?, ?)",
+                     (amount, category, date, description)
+     )
+     # features created by Bing Han
+     def delete_transaction(self, transaction_id):
+        self.runQuery("DELETE FROM transactions WHERE id = ?", (transaction_id,))  
     
     
-    '''Don't forget to add other features from 4-10'''
+    '''Don't forget to add other features from 7-10'''
     
     
     
