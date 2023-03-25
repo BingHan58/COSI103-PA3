@@ -50,6 +50,21 @@ def main():
     '''Read the command args and process them.'''
     tracker = Transaction()
     
+    if len(sys.argv) == 1:
+        # They didn't pass any arguments, so prompt for them in a loop
+        #so prompt for them in a loop
+        print_usage()
+        args = []
+        while args != ['0']:
+            args = input("Enter an option: ").split(' ')
+            process_args(tracker, args)
+            print('-' * 40 + '\n' * 3)
+    else:
+        # Read the args and process them
+        args = sys.argv[1:]
+        process_args(tracker, args)
+        print('-' * 40 + '\n' * 3)
+    
     
 
 if __name__ == '__main__':
