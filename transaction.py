@@ -56,11 +56,6 @@ class Transaction:
     
     
     
-    
-    
-    
-    
-    
         
      def runQuery(self, query, params):
         try:
