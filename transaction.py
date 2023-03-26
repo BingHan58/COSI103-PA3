@@ -105,7 +105,7 @@ class Transaction:
             raise ValueError("Invalid date format. Date should be in the format YYYY-MM-DD.")
         if not isinstance(description, str):
             raise TypeError("Description should be a string.")
-        if not isinstance(amount, int):
+        if not isinstance(amount, float):
             raise TypeError("Amount should be an integer.")
         if not isinstance(category_id, int):
             raise TypeError("Category ID should be an integer.")

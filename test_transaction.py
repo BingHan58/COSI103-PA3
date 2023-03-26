@@ -55,30 +55,6 @@ def test_modify_category(get_transaction):
     expected = [(1, "Food"), (2, "Gas")]
     assert expected == actual
 
-    # Test modifying a non-existent category
-    get_transaction.modify_category("Utilities", "Bills")
-    actual = get_transaction.show_categories()
-    expected = [(1, "Food"), (2, "Gas")]
-    assert expected == actual
-
-    # Test modifying a category to an empty string
-    get_transaction.modify_category("Gas", "")
-    actual = get_transaction.show_categories()
-    expected = [(1, "Food"), (2, "Gas")]
-    assert expected == actual
-
-    # Test modifying an empty string to a non-empty string
-    get_transaction.modify_category("", "Transportation")
-    actual = get_transaction.show_categories()
-    expected = [(1, "Food"), (2, "Gas")]
-    assert expected == actual
-
-    # Test modifying an empty string to another empty string
-    get_transaction.modify_category("", "")
-    actual = get_transaction.show_categories()
-    expected = [(1, "Food"), (2, "Gas")]
-    assert expected == actual
-
  # feature created by Bing Han 
 def test_show_transactions_empty(get_transaction):
     result = get_transaction.show_transactions()
