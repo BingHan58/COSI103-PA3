@@ -41,13 +41,30 @@ For example
 Enter an option: 2 food
 Enter an option: 2 snake
 Enter an option: 2 fruit
-
 ```
+If the user eneter 3, the program will modify category
+```
+Enter an option: 3 food veg
 
-
-
-
-
+Enter an option: 1
+Categories:
+1. veg
+2. snake
+3. fruit
+```
+If the user eneter 4, the program will show transactions
+```
+Enter an option: 4
+(1, 'Snack', 5.99, '2021-03-26', 1)
+(2, 'Food', 7.99, '2021-03-26', 2)
+(3, 'Snack', 9.99, '2022-03-27', 1)
+(4, 'Food', 10.99, '2022-03-27', 2)
+(5, 'Food', 7.99, '2022-04-10', 2)
+(6, 'Snack', 9.99, '2022-04-11', 1)
+(7, 'Food', 7.99, '2023-03-01', 2)
+(8, 'Snack', 9.99, '2023-03-02', 1)
+(9, 'Food', 10.99, '2023-05-02', 2)
+```
 
 
 ***** PA03 Assignment Introduction *****
