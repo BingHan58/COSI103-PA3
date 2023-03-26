@@ -19,46 +19,44 @@ In addition, the ORM includes a method runQuery() that connects to the database,
 import sqlite3
 import os
 
+DB_FILE_PATH = 'tracker.db'
+
+
 class Transaction:
     def __init__(self):
-        self.db_file = os.path.join(os.getenv('HOME'), 'tracker.db')
         self.create_tables()
 
     def create_tables(self):
-       # self.runQuery('''CREATE TABLE IF NOT EXISTS categories (
-       #                     id INTEGER PRIMARY KEY,
-       #                     name TEXT UNIQUE NOT NULL)''', ())
+        # self.runQuery('''CREATE TABLE IF NOT EXISTS categories (
+        #                     id INTEGER PRIMARY KEY,
+        #                     name TEXT UNIQUE NOT NULL)''', ())
 
         self.runQuery('''CREATE TABLE IF NOT EXISTS transactions (
                         id INTEGER PRIMARY KEY,
                         date TEXT NOT NULL,
                         description TEXT NOT NULL,
-                        amount REAL NOT NULL,
-                        category TEXT NOT NULL)''', ())
+                        amount REAL NOT NULL)''', ())
 
+    # features created by Yingshan Hu
+    # def show_categories(self):
+    #   return self.runQuery("SELECT * FROM categories", ())
 
-        
-     # features created by Yingshan Hu
-     #def show_categories(self):
-     #   return self.runQuery("SELECT * FROM categories", ())
-    
-     # features created by Yingshan Hu
-    #def add_category(self, name):
+    # features created by Yingshan Hu
+    # def add_category(self, name):
     #    self.runQuery("INSERT INTO categories(name) VALUES(?)", (name,))
-     
-     # features created by Yingshan Hu
-    #def modify_category(self, old_name, new_name):
+
+    # features created by Yingshan Hu
+    # def modify_category(self, old_name, new_name):
     #    self.runQuery("UPDATE categories SET name = ? WHERE name = ?", (new_name, old_name))
-         
+
     # features created by Bing Han
     def show_transactions(self):
         return self.runQuery("SELECT * FROM transactions", ())
 
-  # features created by Bing Han
-    def add_transaction(self, amount, category, date, description):
-        self.runQuery("INSERT INTO transactions (amount, category, date, description) VALUES (?, ?, ?, ?)",
-            (amount, category, date, description))
-
+    # features created by Bing Han
+    def add_transaction(self, date, description, amount):
+        self.runQuery("INSERT INTO transactions (date, description, amount) VALUES (?, ?, ?)",
+                      (date, description, amount))
 
     # features created by Bing Han
     def delete_transaction(self, transaction_id):
@@ -73,9 +71,9 @@ class Transaction:
     
     
         
-    def runQuery(self, query, params):
+     def runQuery(self, query, params):
         try:
-            conn = sqlite3.connect(self.db_file)
+            conn = sqlite3.connect(DB_FILE_PATH)
             cur = conn.cursor()
             cur.execute(query, params)
             conn.commit()
