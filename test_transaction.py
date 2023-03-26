@@ -83,3 +83,12 @@ def test_summarize_transactions_by_year(get_transactions_for_summarize):
     expected = [('2021', 13.98), ('2022', 38.96), ('2023', 28.97)]
     actual = transaction.summarize_transactions_by_year()
     assert expected == actual
+
+# feature created by Tianling Hou
+def test_summarize_transactions_by_category(transaction):
+    summary = transaction.summarize_transactions_by_category()
+    assert len(summary) == 2
+    assert summary[0]["category"] == "Food"
+    assert summary[0]["SUM(amount)"] == pytest.approx(16.98, rel=1e-2)
+    assert summary[1]["category"] == "Leisure"
+    assert summary[1]["SUM(amount)"] == pytest.approx(25.00, rel=1e-2)

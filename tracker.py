@@ -50,14 +50,21 @@ def process_args(tracker, arglist):
         else:
             tracker.delete_transaction(arglist[1])
     elif arglist[0] == "7":
-        tracker.summarize_transactions_by_date()
+        results = tracker.summarize_transactions_by_date()
+        for result in results:
+            print(result)
     elif arglist[0] == "8":
-        tracker.summarize_transactions_by_month()
+        results = tracker.summarize_transactions_by_month()
+        for result in results:
+            print(result)
     elif arglist[0] == "9":
-        tracker.summarize_transactions_by_year()
-
-        '''Don't forget to add other features from 10'''
-
+        results = tracker.summarize_transactions_by_year()
+        for result in results:
+            print(result)
+    elif arglist[0] == "10":
+        results = tracker.summarize_transactions_by_category()
+        for result in results:
+            print(result)
     elif arglist[0] == "11":
         print_usage()
     else:
