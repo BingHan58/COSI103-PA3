@@ -70,34 +70,19 @@ class Transaction:
     def modify_category(self, old_name, new_name):
        self.runQuery("UPDATE categories SET name = ? WHERE name = ?", (new_name, old_name))
 
-    # features created by Bing Han
-    def show_transactions(self):
-        return self.runQuery("SELECT * FROM transactions", ())
-
     # features created by Bing Han, modified by Tianling
-    # def add_transaction(self, date, description, amount):
-    #     self.runQuery("INSERT INTO transactions (date, description, amount) VALUES (?, ?, ?)",
-    #                   (date, description, amount))
-    def add_transaction(self, date, description, amount, category_id=None):
-        categories = self.runQuery("SELECT * FROM categories", ())
-        category_ids = [cat['id'] for cat in categories]
-        if category_id not in category_ids:
-            category_id = None
-
-        if category_id is None:
-            print("Choose a category:")
-            for cat in categories:
-                print(f"{cat[0]}. {cat[1]}")
-            while True:
-                try:
-                    category_id = int(input("Category ID: "))
-                    if category_id not in category_ids:
-                        print("Invalid category ID.")
-                        continue
-                    break
-                except ValueError:
-                    print("Invalid input.")
-
+    # def show_transactions(self):
+    #     return self.runQuery("SELECT * FROM transactions", ())
+    def show_transactions(self):
+        rows = self.runQuery("SELECT * FROM transactions", ())
+        if len(rows) == 0:
+            print("No transactions found.")
+            return []
+        else:
+            return rows
+        
+    # features created by Bing Han, modified by Tianling
+    def add_transaction(self, date, description, amount, category_id):
         self.runQuery("INSERT INTO transactions (date, description, amount, category_id) VALUES (?, ?, ?, ?)",
                       (date, description, amount, category_id))
 
