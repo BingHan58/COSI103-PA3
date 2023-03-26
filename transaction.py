@@ -64,8 +64,15 @@ class Transaction:
             return False
 
     # features created by Yingshan Hu
+    #def modify_category(self, old_name, new_name):
+       #self.runQuery("UPDATE categories SET name = ? WHERE name = ?", (new_name, old_name))
     def modify_category(self, old_name, new_name):
-       self.runQuery("UPDATE categories SET name = ? WHERE name = ?", (new_name, old_name))
+        if old_name == '' or new_name == '':
+            return
+        category_id = self.runQuery("SELECT id FROM categories WHERE name = ?", (old_name,))
+        if not category_id:
+            return
+        self.runQuery("UPDATE categories SET name = ? WHERE id = ?", (new_name, category_id[0][0]))
 
     # features created by Bing Han, modified by Tianling
     # def show_transactions(self):
