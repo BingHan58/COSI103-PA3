@@ -11,7 +11,7 @@ In addition, the ORM includes a method runQuery() that connects to the database,
 '''
 
 import sqlite3
-import os
+import re
 
 DB_FILE_PATH = 'tracker.db'
 
@@ -76,8 +76,18 @@ class Transaction:
         
     # features created by Bing Han, modified by Tianling
     def add_transaction(self, date, description, amount, category_id):
+        if not re.match(r"\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])", date):
+            raise ValueError("Invalid date format. Date should be in the format YYYY-MM-DD.")
+        if not isinstance(description, str):
+            raise TypeError("Description should be a string.")
+        if not isinstance(amount, int):
+            raise TypeError("Amount should be an integer.")
+        if not isinstance(category_id, int):
+            raise TypeError("Category ID should be an integer.")
         return self.runQuery("INSERT INTO transactions (date, description, amount, category_id) VALUES (?, ?, ?, ?)",
-                      (date, description, amount, category_id))
+                            (date, description, amount, category_id))
+        # return self.runQuery("INSERT INTO transactions (date, description, amount, category_id) VALUES (?, ?, ?, ?)",
+        #               (date, description, amount, category_id))
 
     # features created by Bing Han
     def delete_transaction(self, transaction_id):
@@ -100,20 +110,16 @@ class Transaction:
     def summarize_transactions_by_category(self):
         # Get all categories from the database
         categories = self.runQuery("SELECT * FROM categories", ())
-
         # Initialize list of summary strings
         summaries = []
-
         # Iterate through each category and retrieve its transactions
         for category in categories:
             category_id = category[0]
-            print(category_id)
             category_name = category[1]
-            print(category_name)
             transactions = self.runQuery("SELECT * FROM transactions WHERE category_id = ?", (category_id,))
 
             # Calculate total amount spent for this category
-            total_amount = sum([transaction['amount'] for transaction in transactions])
+            total_amount = sum([transaction[3] for transaction in transactions])
 
             # Add summary string to list
             summary = f"Category: {category_name}\nTotal amount spent: {total_amount}\nNumber of transactions: {len(transactions)}\n"

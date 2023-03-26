@@ -52,7 +52,14 @@ def process_args(tracker, arglist):
             print("Not enough arguments for 'add transaction'")
             print_usage()
         else:
-            tracker.add_transaction(arglist[1], arglist[2], arglist[3], arglist[4])
+            try:
+                tracker.add_transaction(arglist[1], arglist[2], int(arglist[3]), int(arglist[4]))
+                print("Transaction added successfully.")
+            except TypeError as e:
+                print(str(e))
+            except Exception as e:
+                print("An error occurred while adding the transaction.")
+                print(str(e))
     elif arglist[0] == "6":
         if len(arglist) < 2:
             print("Not enough arguments for 'delete transaction'")
