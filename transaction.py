@@ -117,28 +117,11 @@ class Transaction:
             category_id = category[0]
             category_name = category[1]
             transactions = self.runQuery("SELECT * FROM transactions WHERE category_id = ?", (category_id,))
-
-            # Calculate total amount spent for this category
-            total_amount = sum([transaction[3] for transaction in transactions])
-
+            total_amount = sum([transaction[2] for transaction in transactions])
             # Add summary string to list
-            summary = f"Category: {category_name}\nTotal amount spent: {total_amount}\nNumber of transactions: {len(transactions)}\n"
+            summary = f"Category: {category_name}\nTotal amount spent: {str(total_amount)}\nNumber of transactions: {len(transactions)}\n"
             summaries.append(summary)
-            return summaries
-
-
-
-    # def runQuery(self, query, params):
-    #     try:
-    #         conn = sqlite3.connect(DB_FILE_PATH)
-    #         cur = conn.cursor()
-    #         cur.execute(query, params)
-    #         conn.commit()
-    #         rows = cur.fetchall()
-    #         conn.close()
-    #         return rows
-    #     except sqlite3.Error as e:
-    #         pass
+        return summaries
 
     # feature modified by Tianling Hou
     def runQuery(self, query, tuple, fetch_names=False):
