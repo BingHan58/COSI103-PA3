@@ -53,8 +53,6 @@ class Transaction:
         self.categories = self.run_query("SELECT * FROM categories", ())
 
     # features created by Yingshan Hu, modified by Tianling
-    # def show_categories(self):
-    #   return self.run_query("SELECT * FROM categories", ())
     def show_categories(self):
         """
         Return a list of dictionaries representing all categories in the categories table.
@@ -63,8 +61,6 @@ class Transaction:
         return rows
 
     # features created by Yingshan Hu, modified by Tianling
-    # def add_category(self, name):
-    #    self.run_query("INSERT INTO categories(name) VALUES(?)", (name,))
     def add_category(self, name):
         """
         Add a new category to the categories table.
@@ -105,8 +101,8 @@ class Transaction:
             raise ValueError("Invalid date format. Date should be in the format YYYY-MM-DD.")
         if not isinstance(description, str):
             raise TypeError("Description should be a string.")
-        if not isinstance(amount, float):
-            raise TypeError("Amount should be an integer.")
+        if not isinstance(amount, (float, int)):
+            raise TypeError("Amount should be a number.")
         if not isinstance(category_id, int):
             raise TypeError("Category ID should be an integer.")
         return self.run_query(

@@ -161,9 +161,9 @@ def transaction_test():
     transaction = Transaction()
     
     # Add a few transactions to the database
-    transaction.add_transaction("2023-03-01", "Groceries", 50, 1)
-    transaction.add_transaction("2023-03-02", "Gas", 30, 2)
-    transaction.add_transaction("2023-03-03", "Coffee", 5, 3)
+    transaction.add_transaction("2023-03-01", "Groceries", 50.08, 1)
+    transaction.add_transaction("2023-03-02", "Gas", 30.11, 2)
+    transaction.add_transaction("2023-03-03", "Coffee", 5.2, 3)
     
     yield transaction
     
