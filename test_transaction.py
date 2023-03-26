@@ -3,7 +3,6 @@ import os
 import pytest
 from transaction import Transaction, DB_FILE_PATH
 
-
 @pytest.fixture
 def get_transaction():
     if os.path.exists(DB_FILE_PATH):
@@ -180,10 +179,35 @@ def test_summarize_transactions_by_year(get_transactions_for_summarize):
     assert expected == actual
 
 # feature created by Tianling Hou
-def test_summarize_transactions_by_category(transaction):
-    summary = transaction.summarize_transactions_by_category()
-    assert len(summary) == 2
-    assert summary[0]["category"] == "Food"
-    assert summary[0]["SUM(amount)"] == pytest.approx(16.98, rel=1e-2)
-    assert summary[1]["category"] == "Leisure"
-    assert summary[1]["SUM(amount)"] == pytest.approx(25.00, rel=1e-2)
+@pytest.fixture
+def transaction_test():
+    # Initialize Transaction object
+    transaction = Transaction()
+    
+    # Add a few transactions to the database
+    transaction.add_transaction("2023-03-01", "Groceries", 50, 1)
+    transaction.add_transaction("2023-03-02", "Gas", 30, 2)
+    transaction.add_transaction("2023-03-03", "Coffee", 5, 3)
+    
+    yield transaction
+    
+    # Clean up the database
+    transaction.runQuery("DELETE FROM transactions", ())
+    
+
+def test_summarize_transactions_by_category(transaction_test):
+    # Test the summarize_transactions_by_category method
+    result = transaction_test.summarize_transactions_by_category()
+    
+    # Assert that the result is a list of strings
+    assert isinstance(result, list)
+    for summary in result:
+        assert isinstance(summary, str)
+        
+    # Assert that the summary strings contain the correct information
+    expected_summaries = [
+        "Category: Groceries\nTotal amount spent: 50\nNumber of transactions: 1\n",
+        "Category: Gas\nTotal amount spent: 30\nNumber of transactions: 1\n",
+        "Category: Coffee\nTotal amount spent: 5\nNumber of transactions: 1\n"
+    ]
+    assert result == expected_summaries
