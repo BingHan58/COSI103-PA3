@@ -13,11 +13,18 @@ In place of SQL queries, we will have method calls.
 This app will store the data in a SQLite database named tracker.db
 The class Transaction provides various methods for accessing and manipulating data, including getting ,adding and modifying categories, adding and deleting transactions, and summarizing transactions by date, month, year, or category etc.
 
-In addition, the ORM includes a method runQuery() that connects to the database, executes a query with parameters, fetches the rows, and closes the connection. The method catches and ignores any errors that may occur during the database interaction.
+In addition, the ORM includes a method run_query() that connects to the database, executes a query with parameters, fetches the rows, and closes the connection. The method catches and ignores any errors that may occur during the database interaction.
 
 
 ***** Pylint Script *****
+```
+pylint transaction.py
+```
 
+***** How to run tracker *****
+```
+python3 tracker.py
+```
 
 
 

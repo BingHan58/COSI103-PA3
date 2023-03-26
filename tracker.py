@@ -36,6 +36,8 @@ def process_args(tracker, arglist):
             print("Categories:")
             for row in rows:
                 print(f"{row[0]}. {row[1]}")
+    elif arglist[0] == "2" and len(arglist) == 1:
+        print("The format should be '2 category_name'")
     elif arglist[0] == "2":
         tracker.add_category(arglist[1])
     elif arglist[0] == "3":
