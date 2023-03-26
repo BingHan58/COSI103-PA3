@@ -21,11 +21,11 @@ def test_show_categories(get_transaction):
     get_transaction.runQuery("INSERT INTO categories(name) VALUES ('Gas')")
     
     # Get the categories
-    categories = get_transaction.show_categories()
+    actual = get_transaction.show_categories()
     
     # Check that the returned categories are correct
     expected = [(1, 'Groceries'), (2, 'Gas')]
-    assert categories == expected
+    assert expected == actual
 
 # feature created by Yingshan Hu    
 def test_add_category(get_transaction):
@@ -37,30 +37,48 @@ def test_add_category(get_transaction):
     get_transaction.add_category("Dining out")
     
     # Get the categories
-    categories = get_transaction.runQuery("SELECT * FROM categories", ())
+    actual = get_transaction.runQuery("SELECT * FROM categories", ())
     
     # Check that the category was added correctly
     expected = [(1, 'Dining out')]
-    assert categories == expected
+    assert expected == actual
 
 # feature created by Yingshan Hu    
 def test_modify_category(get_transaction):
-    # Ensure that modifying a non-existent category does not result in an error
-    get_transaction.modify_category("Non-existent Category", "New Category")
-    assert get_transaction.show_categories() == []
-    
-    # Add a category to the database
-    get_transaction.runQuery("INSERT INTO categories(name) VALUES ('Entertainment')")
-    
-    # Modify the category
-    get_transaction.modify_category("Entertainment", "Movies")
-    
-    # Get the categories
-    categories = get_transaction.runQuery("SELECT * FROM categories", ())
-    
-    # Check that the category was modified correctly
-    expected = [(1, 'Movies')]
-    assert categories == expected
+    # Add some categories to the database
+    get_transaction.add_category("Groceries")
+    get_transaction.add_category("Gas")
+
+    # Test modifying an existing category
+    get_transaction.modify_category("Groceries", "Food")
+    actual = get_transaction.show_categories()
+    expected = [(1, "Food"), (2, "Gas")]
+    assert expected == actual
+
+    # Test modifying a non-existent category
+    get_transaction.modify_category("Utilities", "Bills")
+    actual = get_transaction.show_categories()
+    expected = [(1, "Food"), (2, "Gas")]
+    assert expected == actual
+
+    # Test modifying a category to an empty string
+    get_transaction.modify_category("Gas", "")
+    actual = get_transaction.show_categories()
+    expected = [(1, "Food"), (2, "Gas")]
+    assert expected == actual
+
+    # Test modifying an empty string to a non-empty string
+    get_transaction.modify_category("", "Transportation")
+    actual = get_transaction.show_categories()
+    expected = [(1, "Food"), (2, "Gas")]
+    assert expected == actual
+
+    # Test modifying an empty string to another empty string
+    get_transaction.modify_category("", "")
+    actual = get_transaction.show_categories()
+    expected = [(1, "Food"), (2, "Gas")]
+    assert expected == actual
+
     
 def test_add_show_transaction(get_transaction):
     params_lst = [("2022-03-26", "Snack", 5.99),
