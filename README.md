@@ -1,6 +1,6 @@
 # COSI103-PA3
 
-1.PA03 Introduction
+***** PA03 Introduction *****
 
 Transaction.py is an Object-Relational Mapping (ORM) module that interacts with the tracker.db database.
 
@@ -16,7 +16,7 @@ The class Transaction provides various methods for accessing and manipulating da
 In addition, the ORM includes a method runQuery() that connects to the database, executes a query with parameters, fetches the rows, and closes the connection. The method catches and ignores any errors that may occur during the database interaction.
 
 
-2.Pylint Script
+***** Pylint Script *****
 
 
 
@@ -28,7 +28,7 @@ In addition, the ORM includes a method runQuery() that connects to the database,
 
 
 
-3.PA03 Assignment Introduction:
+***** PA03 Assignment Introduction *****
 
 PA03 - finance tracker - using SQL, pytest, and pylint
 
