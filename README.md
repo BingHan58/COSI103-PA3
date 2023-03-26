@@ -75,12 +75,71 @@ Enter an option: 6 1
 Enter an option: 4
 (2, 'Grocery', 100.0, '2022-03-28', 1)
 ```
+If the user eneter 7, the program will summarize transactions by date
+```
+Enter an option: 4
+(2, 'Grocery', 100.0, '2022-03-28', 1)
+(3, 'snake', 12.0, '2022-03-28', 3)
+(4, 'food', 2.0, '2022-03-28', 2)
+(5, 'food', 3.0, '2022-04-23', 2)
+(6, 'food', 9.0, '2022-04-29', 2)
+(7, 'snake', 18.0, '2022-05-01', 2)
 
 
+Enter an option: 7
+('2022-03-28', 114.0)
+('2022-04-23', 3.0)
+('2022-04-29', 9.0)
+('2022-05-01', 18.0)
+```
+If the user eneter 8, the program will summarize transactions by month
+```
+Enter an option: 4
+(2, 'Grocery', 100.0, '2022-03-28', 1)
+(3, 'snake', 12.0, '2022-03-28', 3)
+(4, 'food', 2.0, '2022-03-28', 2)
+(5, 'food', 3.0, '2022-04-23', 2)
+(6, 'food', 9.0, '2022-04-29', 2)
+(7, 'snake', 18.0, '2022-05-01', 2)
 
 
+Enter an option: 8
+('2022-03', 114.0)
+('2022-04', 12.0)
+('2022-05', 18.0)
+```
+If the user eneter 9, the program will summarize transactions by month
+```
+Enter an option: 4
+(2, 'Grocery', 100.0, '2022-03-28', 1)
+(3, 'snake', 12.0, '2022-03-28', 3)
+(4, 'food', 2.0, '2022-03-28', 2)
+(5, 'food', 3.0, '2022-04-23', 2)
+(6, 'food', 9.0, '2022-04-29', 2)
+(7, 'snake', 18.0, '2022-05-01', 2)
+(8, 'snake', 12.0, '2023-09-01', 2)
 
-
+Enter an option: 9
+('2022', 144.0)
+('2023', 12.0)
+```
+If the user eneter 10, the program will print this menu
+```
+Enter an option: 11
+Options:
+     0. quit
+     1. show categories
+     2. add category
+     3. modify category
+     4. show transactions
+     5. add transaction
+     6. delete transaction
+     7. summarize transactions by date
+     8. summarize transactions by month
+     9. summarize transactions by year
+     10. summarize transactions by category
+     11. print this menu
+```     
 ***** PA03 Assignment Introduction *****
 
 PA03 - finance tracker - using SQL, pytest, and pylint
