@@ -118,8 +118,7 @@ class Transaction:
     def summarize_transactions_by_year(self):
         return self.runQuery("SELECT strftime('%Y', date) AS year, SUM(amount) FROM transactions GROUP BY year", ())
 
-    '''Don't forget to add other features from 10'''
-    # feature modified by Tianling Hou
+    # feature created by Tianling Hou
     def summarize_transactions_by_category(self):
         # Get all categories from the database
         categories = self.runQuery("SELECT * FROM categories", ())
@@ -150,6 +149,7 @@ class Transaction:
     #         return rows
     #     except sqlite3.Error as e:
     #         pass
+
     # feature modified by Tianling Hou
     def runQuery(self, query, tuple, fetch_names=False):
         con = sqlite3.connect(DB_FILE_PATH)
