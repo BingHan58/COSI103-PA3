@@ -37,10 +37,9 @@ def process_args(tracker, arglist):
             for row in rows:
                 print(f"{row[0]}. {row[1]}")
     elif arglist[0] == "2":
-        result = tracker.add_category(arglist[1])
-        print(result)
+        tracker.add_category(arglist[1])
     elif arglist[0] == "3":
-        print(tracker.modify_category(arglist[1], arglist[2]))
+        tracker.modify_category(arglist[1], arglist[2])
     elif arglist[0] == "4":
         transactions = tracker.show_transactions()
         if transactions[0] == "No transactions found.":
@@ -53,7 +52,7 @@ def process_args(tracker, arglist):
             print("Not enough arguments for 'add transaction'")
             print_usage()
         else:
-            print(tracker.add_transaction(arglist[1], arglist[2], arglist[3], arglist[4]))
+            tracker.add_transaction(arglist[1], arglist[2], arglist[3], arglist[4])
     elif arglist[0] == "6":
         if len(arglist) < 2:
             print("Not enough arguments for 'delete transaction'")
