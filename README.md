@@ -27,7 +27,6 @@ python3 tracker.py
 ```
 If the user enter 0, the program will quit
 If the user eneter 1, the program will show all categories
-For example
 ```
 Enter an option: 1
 Categories:
@@ -36,7 +35,6 @@ Categories:
 3. fruit
 ```
 If the user eneter 2, the program will add a category
-For example
 ```
 Enter an option: 2 food
 Enter an option: 2 snake
@@ -67,9 +65,17 @@ Transaction added successfully.
 Enter an option: 5 2022-03-28 Grocery 100 1
 Transaction added successfully.
 ----------------------------------------
+
+Enter an option: 4
+(1, 'Food', 103.0, '2022-03-28', 2)
+(2, 'Grocery', 100.0, '2022-03-28', 1)
 ```
 If the user eneter 6, the program will delete transaction
 ```
+Enter an option: 4
+(1, 'Food', 103.0, '2022-03-28', 2)
+(2, 'Grocery', 100.0, '2022-03-28', 1)
+
 Enter an option: 6 1
 
 Enter an option: 4
