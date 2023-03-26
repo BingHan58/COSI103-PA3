@@ -1,5 +1,5 @@
 import sys
-from transaction_br1 import Transaction
+from transaction import Transaction
 
 HELP = '''Options:
      0. quit
