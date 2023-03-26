@@ -42,9 +42,25 @@ def test_add_category(get_transaction):
     # Check that the category was added correctly
     expected = [(1, 'Dining out')]
     assert categories == expected
+
+# feature created by Yingshan Hu    
+def test_modify_category(get_transaction):
+    # Ensure that modifying a non-existent category does not result in an error
+    get_transaction.modify_category("Non-existent Category", "New Category")
+    assert get_transaction.show_categories() == []
     
+    # Add a category to the database
+    get_transaction.runQuery("INSERT INTO categories(name) VALUES ('Entertainment')")
     
+    # Modify the category
+    get_transaction.modify_category("Entertainment", "Movies")
     
+    # Get the categories
+    categories = get_transaction.runQuery("SELECT * FROM categories", ())
+    
+    # Check that the category was modified correctly
+    expected = [(1, 'Movies')]
+    assert categories == expected
     
 def test_add_show_transaction(get_transaction):
     params_lst = [("2022-03-26", "Snack", 5.99),
