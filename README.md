@@ -55,16 +55,30 @@ Categories:
 If the user eneter 4, the program will show transactions
 ```
 Enter an option: 4
-(1, 'Snack', 5.99, '2021-03-26', 1)
-(2, 'Food', 7.99, '2021-03-26', 2)
-(3, 'Snack', 9.99, '2022-03-27', 1)
-(4, 'Food', 10.99, '2022-03-27', 2)
-(5, 'Food', 7.99, '2022-04-10', 2)
-(6, 'Snack', 9.99, '2022-04-11', 1)
-(7, 'Food', 7.99, '2023-03-01', 2)
-(8, 'Snack', 9.99, '2023-03-02', 1)
-(9, 'Food', 10.99, '2023-05-02', 2)
+(1, 'Food', 103.0, '2022-03-28', 2)
+(2, 'Grocery', 100.0, '2022-03-28', 1)
 ```
+If the user eneter 5, the program will add transaction
+```
+Enter an option: 5 2022-03-28 Food 103 2                    
+Transaction added successfully.
+----------------------------------------
+
+Enter an option: 5 2022-03-28 Grocery 100 1
+Transaction added successfully.
+----------------------------------------
+```
+If the user eneter 6, the program will delete transaction
+```
+Enter an option: 6 1
+
+Enter an option: 4
+(2, 'Grocery', 100.0, '2022-03-28', 1)
+```
+
+
+
+
 
 
 ***** PA03 Assignment Introduction *****
