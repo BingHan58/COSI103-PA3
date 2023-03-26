@@ -25,9 +25,24 @@ pylint transaction.py
 ```
 python3 tracker.py
 ```
+If the user enter 0, the program will quit
+If the user eneter 1, the program will show all categories
+For example
+```
+Enter an option: 1
+Categories:
+1. food
+2. snake
+3. fruit
+```
+If the user eneter 2, the program will add a category
+For example
+```
+Enter an option: 2 food
+Enter an option: 2 snake
+Enter an option: 2 fruit
 
-
-
+```
 
 
 
