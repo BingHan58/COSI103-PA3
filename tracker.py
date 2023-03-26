@@ -38,9 +38,17 @@ def process_args(tracker, arglist):
         for transaction in tracker.show_transactions():
             print(transaction)
     elif arglist[0] == "5":
-        tracker.add_transaction(arglist[1], arglist[2], arglist[3], arglist[4])
+        if len(arglist) < 5:
+            print("Not enough arguments for 'add transaction'")
+            print_usage()
+        else:
+            tracker.add_transaction(arglist[1], arglist[2], arglist[3], arglist[4])
     elif arglist[0] == "6":
-        tracker.delete_transaction(arglist[1])
+        if len(arglist) < 2:
+            print("Not enough arguments for 'delete transaction'")
+            print_usage()
+        else:
+            tracker.delete_transaction(arglist[1])
     elif arglist[0] == "7":
         tracker.summarize_transactions_by_date()
     elif arglist[0] == "8":
@@ -49,9 +57,6 @@ def process_args(tracker, arglist):
         tracker.summarize_transactions_by_year()
 
         '''Don't forget to add other features from 10'''
-
-
-
 
     elif arglist[0] == "11":
         print_usage()
