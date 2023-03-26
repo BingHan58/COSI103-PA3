@@ -46,33 +46,23 @@ class Transaction:
     #   return self.runQuery("SELECT * FROM categories", ())
     def show_categories(self):
         rows = self.runQuery("SELECT id, name FROM categories", ())
-        if len(rows) == 0:
-            return []
-        else:
-            return rows
+        return rows
 
     # features created by Yingshan Hu, modified by Tianling
     # def add_category(self, name):
     #    self.runQuery("INSERT INTO categories(name) VALUES(?)", (name,))
     def add_category(self, name):
         if name == '':
-            return False
+            return "Need to provide category name"
         try:
             self.runQuery("INSERT INTO categories(name) VALUES(?)", (name,))
-            return True
+            return f"{name} category added successfully."
         except sqlite3.IntegrityError:
-            return False
+            return f"{name} category already exists."
 
     # features created by Yingshan Hu
-    #def modify_category(self, old_name, new_name):
-       #self.runQuery("UPDATE categories SET name = ? WHERE name = ?", (new_name, old_name))
     def modify_category(self, old_name, new_name):
-        if old_name == '' or new_name == '':
-            return
-        category_id = self.runQuery("SELECT id FROM categories WHERE name = ?", (old_name,))
-        if not category_id:
-            return
-        self.runQuery("UPDATE categories SET name = ? WHERE id = ?", (new_name, category_id[0][0]))
+       self.runQuery("UPDATE categories SET name = ? WHERE name = ?", (new_name, old_name))
 
     # features created by Bing Han, modified by Tianling
     # def show_transactions(self):
@@ -80,8 +70,7 @@ class Transaction:
     def show_transactions(self):
         rows = self.runQuery("SELECT * FROM transactions", ())
         if len(rows) == 0:
-            print("No transactions found.")
-            return []
+            return "No transactions found.", []
         else:
             return rows
         
@@ -130,7 +119,7 @@ class Transaction:
             return summaries
 
 
-    # features created by Yingshan Hu
+
     # def runQuery(self, query, params):
     #     try:
     #         conn = sqlite3.connect(DB_FILE_PATH)

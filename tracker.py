@@ -29,26 +29,37 @@ def process_args(tracker, arglist):
     elif arglist[0] == "0":
         return
     elif arglist[0] == "1":
-        tracker.show_categories()
+        rows = tracker.show_categories()
+        if len(rows) == 0:
+            print("No categories found.")
+        else:
+            print("Categories:")
+            for row in rows:
+                print(f"{row[0]}. {row[1]}")
     elif arglist[0] == "2":
-        tracker.add_category(arglist[1])
+        result = tracker.add_category(arglist[1])
+        print(result)
     elif arglist[0] == "3":
-        tracker.modify_category(arglist[1], arglist[2])
+        print(tracker.modify_category(arglist[1], arglist[2]))
     elif arglist[0] == "4":
-        for transaction in tracker.show_transactions():
-            print(transaction)
+        transactions = tracker.show_transactions()
+        if transactions[0] == "No transactions found.":
+            print(transactions[0])
+        else:
+            for transaction in transactions:
+                print(transaction)
     elif arglist[0] == "5":
         if len(arglist) < 5:
             print("Not enough arguments for 'add transaction'")
             print_usage()
         else:
-            tracker.add_transaction(arglist[1], arglist[2], arglist[3], arglist[4])
+            print(tracker.add_transaction(arglist[1], arglist[2], arglist[3], arglist[4]))
     elif arglist[0] == "6":
         if len(arglist) < 2:
             print("Not enough arguments for 'delete transaction'")
             print_usage()
         else:
-            tracker.delete_transaction(arglist[1])
+            print(tracker.delete_transaction(arglist[1]))
     elif arglist[0] == "7":
         results = tracker.summarize_transactions_by_date()
         for result in results:
