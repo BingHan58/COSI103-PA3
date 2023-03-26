@@ -1,21 +1,3 @@
-'''
-transaction.py is an Object-Relational Mapping (ORM) module that interacts with the tracker.db database.
-
-The ORM will map SQL rows with the schema
-(id, date, description, amount, category_id)
-to Python Dictionaries as follows:
-{id:1, date:'2022-03-28', description:'Grocery shopping', amount: 100.00, category_id:1}
-
-
-In place of SQL queries, we will have method calls.
-
-This app will store the data in a SQLite database named tracker.db
-
-The class Transaction provides various methods for accessing and manipulating data, including adding and modifying categories, adding and deleting transactions, and summarizing transactions by date, month, year, or category.
-
-In addition, the ORM includes a method runQuery() that connects to the database, executes a query with parameters, fetches the rows, and closes the connection. The method catches and ignores any errors that may occur during the database interaction.
-'''
-
 import sqlite3
 import os
 
@@ -47,17 +29,35 @@ class Transaction:
     def modify_category(self, old_name, new_name):
         self.runQuery("UPDATE categories SET name = ? WHERE name = ?", (new_name, old_name))  
         
-      
+    # features created by Bing Han
+    def show_transactions(self):
+        return self.runQuery("SELECT * FROM transactions", ())
+
+    # features created by Bing Han
+    def add_transaction(self, amount, category_id, date, description):
+        self.runQuery("INSERT INTO transactions (amount, category_id, date, description) VALUES (?, ?, ?, ?)",
+            (amount, category_id, date, description))
+
+    # features created by Bing Han
+    def delete_transaction(self, transaction_id):
+        self.runQuery("DELETE FROM transactions WHERE id = ?", (transaction_id,))
     
-    
+    # features created by Tianling Hou
     '''Don't forget to add other features from 4-10'''
+    def summarize_transactions_by_category(self):
+        """Summarize transactions by category"""
+        summary_query = """
+            SELECT category_id, SUM(amount)
+            FROM transactions
+            GROUP BY category_id
+        """
+        return self.runQuery(summary_query, ())
      
     def runQuery(self, query, tuple):
-        con = sqlite3.connect(os.getenv('HOME'), 'tracker.db')
+        con = sqlite3.connect(os.path.join(os.getenv('HOME'), 'tracker.db'))
         cur = con.cursor() 
         cur.execute(query,tuple)
         tuples = cur.fetchall()
         con.commit()
         con.close()
         return [toDict(t) for t in tuples]
-        

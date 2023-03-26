@@ -73,7 +73,7 @@ class Transaction:
     
     
         
-     def runQuery(self, query, params):
+    def runQuery(self, query, params):
         try:
             conn = sqlite3.connect(self.db_file)
             cur = conn.cursor()
