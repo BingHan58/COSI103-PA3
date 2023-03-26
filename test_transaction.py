@@ -82,7 +82,7 @@ def test_modify_category(get_transaction):
  # feature created by Bing Han 
 def test_show_transactions_empty(get_transaction):
     result = get_transaction.show_transactions()
-    assert result == []
+    assert result == ('No transactions found.', [])
  # feature created by Bing Han 
 def test_show_transactions_nonempty(get_transaction):
     get_transaction.add_transaction('2023-03-26', 'Groceries', 100.0, 1)
