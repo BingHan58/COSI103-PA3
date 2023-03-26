@@ -58,7 +58,7 @@ def process_args(tracker, arglist):
             print("Not enough arguments for 'delete transaction'")
             print_usage()
         else:
-            print(tracker.delete_transaction(arglist[1]))
+            tracker.delete_transaction(arglist[1])
     elif arglist[0] == "7":
         results = tracker.summarize_transactions_by_date()
         for result in results:

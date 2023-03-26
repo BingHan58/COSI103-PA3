@@ -107,7 +107,9 @@ class Transaction:
         # Iterate through each category and retrieve its transactions
         for category in categories:
             category_id = category[0]
+            print(category_id)
             category_name = category[1]
+            print(category_name)
             transactions = self.runQuery("SELECT * FROM transactions WHERE category_id = ?", (category_id,))
 
             # Calculate total amount spent for this category
