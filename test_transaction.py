@@ -13,7 +13,10 @@ def get_transaction():
 
 # feature created by Yingshan Hu
 def test_show_categories(get_transaction):
-    # Add some categories to the database
+    # Test when there are no categories initially
+    assert get_transaction.show_categories() == []
+
+   # Add some categories to the database
     get_transaction.runQuery("INSERT INTO categories(name) VALUES ('Groceries')")
     get_transaction.runQuery("INSERT INTO categories(name) VALUES ('Gas')")
     
