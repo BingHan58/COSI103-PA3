@@ -76,7 +76,7 @@ class Transaction:
         
     # features created by Bing Han, modified by Tianling
     def add_transaction(self, date, description, amount, category_id):
-        self.runQuery("INSERT INTO transactions (date, description, amount, category_id) VALUES (?, ?, ?, ?)",
+        return self.runQuery("INSERT INTO transactions (date, description, amount, category_id) VALUES (?, ?, ?, ?)",
                       (date, description, amount, category_id))
 
     # features created by Bing Han
