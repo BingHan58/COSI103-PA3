@@ -11,6 +11,19 @@ def get_transaction():
     transaction = Transaction()
     return transaction
 
+# feature created by Yingshan Hu
+def test_show_categories(get_transaction):
+    # Add some categories to the database
+    get_transaction.runQuery("INSERT INTO categories(name) VALUES ('Groceries')")
+    get_transaction.runQuery("INSERT INTO categories(name) VALUES ('Gas')")
+    
+    # Get the categories
+    categories = get_transaction.show_categories()
+    
+    # Check that the returned categories are correct
+    expected = [(1, 'Groceries'), (2, 'Gas')]
+    assert categories == expected
+    
 
 def test_add_show_transaction(get_transaction):
     params_lst = [("2022-03-26", "Snack", 5.99),
