@@ -26,8 +26,26 @@ def test_show_categories(get_transaction):
     # Check that the returned categories are correct
     expected = [(1, 'Groceries'), (2, 'Gas')]
     assert categories == expected
-    
 
+# feature created by Yingshan Hu    
+def test_add_category(get_transaction):
+    # Ensure that an empty category name cannot be added
+    get_transaction.add_category("")
+    assert get_transaction.show_categories() == []
+    
+    # Add a category to the database
+    get_transaction.add_category("Dining out")
+    
+    # Get the categories
+    categories = get_transaction.runQuery("SELECT * FROM categories", ())
+    
+    # Check that the category was added correctly
+    expected = [(1, 'Dining out')]
+    assert categories == expected
+    
+    
+    
+    
 def test_add_show_transaction(get_transaction):
     params_lst = [("2022-03-26", "Snack", 5.99),
                   ("2022-03-26", "Food", 7.99),
