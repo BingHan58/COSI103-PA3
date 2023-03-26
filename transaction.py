@@ -108,6 +108,9 @@ class Transaction:
         # Get all categories from the database
         categories = self.runQuery("SELECT * FROM categories", ())
 
+        # Initialize list of summary strings
+        summaries = []
+
         # Iterate through each category and retrieve its transactions
         for category in categories:
             category_id = category[0]
@@ -117,11 +120,12 @@ class Transaction:
             # Calculate total amount spent for this category
             total_amount = sum([transaction['amount'] for transaction in transactions])
 
-            # Print out the summary information for this category
-            print(f"Category: {category_name}")
-            print(f"Total amount spent: {total_amount}")
-            print(f"Number of transactions: {len(transactions)}")
-            print()
+            # Add summary string to list
+            summary = f"Category: {category_name}\nTotal amount spent: {total_amount}\nNumber of transactions: {len(transactions)}\n"
+            summaries.append(summary)
+            return summaries
+
+
 
     # def runQuery(self, query, params):
     #     try:
