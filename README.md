@@ -123,7 +123,16 @@ Enter an option: 9
 ('2022', 144.0)
 ('2023', 12.0)
 ```
-If the user eneter 10, the program will print this menu
+If the user eneter 10, the program will summarize transactions by category
+```
+
+
+
+
+```
+
+
+If the user eneter 11, the program will print this menu
 ```
 Enter an option: 11
 Options:
