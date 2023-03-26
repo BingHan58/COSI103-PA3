@@ -17,8 +17,8 @@ def test_show_categories(get_transaction):
     assert get_transaction.show_categories() == []
 
    # Add some categories to the database
-    get_transaction.runQuery("INSERT INTO categories(name) VALUES (?)", ('Groceries',))
-    get_transaction.runQuery("INSERT INTO categories(name) VALUES (?)", ('Gas',))
+    get_transaction.run_query("INSERT INTO categories(name) VALUES (?)", ('Groceries',))
+    get_transaction.run_query("INSERT INTO categories(name) VALUES (?)", ('Gas',))
     
     # Get the categories
     actual = get_transaction.show_categories()
@@ -37,7 +37,7 @@ def test_add_category(get_transaction):
     get_transaction.add_category("Dining out")
     
     # Get the categories
-    actual = get_transaction.runQuery("SELECT * FROM categories", ())
+    actual = get_transaction.run_query("SELECT * FROM categories", ())
     
     # Check that the category was added correctly
     expected = [(1, 'Dining out')]
