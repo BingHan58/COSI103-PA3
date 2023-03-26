@@ -47,24 +47,21 @@ class Transaction:
     def show_categories(self):
         rows = self.runQuery("SELECT id, name FROM categories", ())
         if len(rows) == 0:
-            print("No categories found.")
+            return []
         else:
-            print("Categories:")
-            for row in rows:
-                print(f"{row[0]}. {row[1]}")
+            return rows
 
     # features created by Yingshan Hu, modified by Tianling
     # def add_category(self, name):
     #    self.runQuery("INSERT INTO categories(name) VALUES(?)", (name,))
     def add_category(self, name):
         if name == '':
-            print("Need to provide category name")
-            return
+            return False
         try:
             self.runQuery("INSERT INTO categories(name) VALUES(?)", (name,))
-            print(f"{name} category added successfully.")
+            return True
         except sqlite3.IntegrityError:
-            print(f"{name} category already exists.")
+            return False
 
     # features created by Yingshan Hu
     def modify_category(self, old_name, new_name):
