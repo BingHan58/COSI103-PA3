@@ -88,10 +88,10 @@ class Transaction:
         """
         Return a list of dictionaries representing all transactions in the transactions table.
         """
-        rows = self.run_query("SELECT * FROM transactions", ())
+        rows = self.run_query("SELECT id, date, description, amount, category_id FROM transactions", ())
         if len(rows) == 0:
             return "No transactions found.", []
-        return rows
+        return [tuple(row) for row in rows]
 
     # features created by Bing Han, modified by Tianling Hou
     def add_transaction(self, date: str, description: str, amount: float, category_id: int):

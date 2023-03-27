@@ -82,17 +82,17 @@ def test_show_transactions_nonempty(get_transaction):
     get_transaction.add_transaction('2023-03-27', 'Gasoline', 50.0, 2)
     result = get_transaction.show_transactions()
     assert len(result) == 2
-    assert result[0][1] == 'Groceries'
-    assert result[0][2] == 100.0
-    assert result[0][3] == '2023-03-26'
+    assert result[0][1] == '2023-03-26'
+    assert result[0][2] == 'Groceries'
+    assert result[0][3] == 100.0
     assert result[0][4] == 1
-    assert result[1][1] == 'Gasoline'
-    assert result[1][2] == 50.0
-    assert result[1][3] == '2023-03-27'
+    assert result[1][1] == '2023-03-27'
+    assert result[1][2] == 'Gasoline'
+    assert result[1][3] == 50.0
     assert result[1][4] == 2
 
 
-# feature created by Bing Han
+# feature created by Bing Han, modified by Tianling Hou
 def test_add_show_transaction(get_transaction):
     """Add tests for add_transaction and show_transaction."""
     params_lst = [
@@ -106,15 +106,15 @@ def test_add_show_transaction(get_transaction):
     actual = get_transaction.show_transactions()
     # modify the expected output format
     expected = [
-        (1, "Snack", 5.99, "2022-03-26", 1),
-        (2, "Food", 7.99, "2022-03-26", 2),
-        (3, "Snack", 9.99, "2022-03-26", 1),
-        (4, "Food", 10.99, "2022-03-26", 2)
+        (1, '2022-03-26', 'Snack', 5.99, 1),
+        (2, '2022-03-26', 'Food', 7.99, 2),
+        (3, '2022-03-26', 'Snack', 9.99, 1),
+        (4, '2022-03-26', 'Food', 10.99, 2)
     ]
     assert expected == actual
 
 
-# feature created by Bing Han
+# feature created by Bing Han， modified by Tianling Hou
 def test_add_delete_show_transaction(get_transaction):
     """Add tests for add_transaction, delete_transaction and show_transaction."""
     params_lst = [("2022-03-26", "Snack", 5.99, 1),
@@ -126,8 +126,7 @@ def test_add_delete_show_transaction(get_transaction):
 
     get_transaction.delete_transaction(2)
     actual = get_transaction.show_transactions()
-    expected = [(params[3],) + params for i, params in enumerate(params_lst)
-                if i != 1]
+    expected = [(1, '2022-03-26', 'Snack', 5.99, 1), (3, '2022-03-26', 'Snack', 9.99, 1), (4, '2022-03-26', 'Food', 10.99, 2)]
     assert expected == actual
 
 
