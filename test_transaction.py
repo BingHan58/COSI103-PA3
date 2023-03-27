@@ -75,7 +75,7 @@ def test_show_transactions_empty(get_transaction):
     assert result == ('No transactions found.', [])
 
 
-# feature created by Bing Han
+# feature created by Bing Han, modified by Tianling Hou
 def test_show_transactions_nonempty(get_transaction):
     """Add tests for show_transactions when table is not empty"""
     get_transaction.add_transaction('2023-03-26', 'Groceries', 100.0, 1)
