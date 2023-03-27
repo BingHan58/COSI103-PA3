@@ -3,6 +3,7 @@ import os
 import pytest
 from transaction import Transaction, DB_FILE_PATH
 
+
 @pytest.fixture
 def get_transaction():
     if os.path.exists(DB_FILE_PATH):
@@ -10,39 +11,42 @@ def get_transaction():
     transaction = Transaction()
     return transaction
 
+
 # feature created by Yingshan Hu
 def test_show_categories(get_transaction):
     # Test when there are no categories initially
     assert get_transaction.show_categories() == []
 
-   # Add some categories to the database
+    # Add some categories to the database
     get_transaction.run_query("INSERT INTO categories(name) VALUES (?)", ('Groceries',))
     get_transaction.run_query("INSERT INTO categories(name) VALUES (?)", ('Gas',))
-    
+
     # Get the categories
     actual = get_transaction.show_categories()
-    
+
     # Check that the returned categories are correct
     expected = [(1, 'Groceries'), (2, 'Gas')]
     assert expected == actual
 
-# feature created by Yingshan Hu    
+
+# feature created by Yingshan Hu
 def test_add_category(get_transaction):
     # Ensure that an empty category name cannot be added
     get_transaction.add_category("")
     assert get_transaction.show_categories() == []
-    
+
     # Add a category to the database
     get_transaction.add_category("Dining out")
-    
+
     # Get the categories
     actual = get_transaction.run_query("SELECT * FROM categories", ())
-    
+
     # Check that the category was added correctly
     expected = [(1, 'Dining out')]
     assert expected == actual
 
-# feature created by Yingshan Hu    
+
+# feature created by Yingshan Hu
 def test_modify_category(get_transaction):
     # Add some categories to the database
     get_transaction.add_category("Groceries")
@@ -54,11 +58,14 @@ def test_modify_category(get_transaction):
     expected = [(1, "Food"), (2, "Gas")]
     assert expected == actual
 
- # feature created by Bing Han 
+
+# feature created by Bing Han
 def test_show_transactions_empty(get_transaction):
     result = get_transaction.show_transactions()
     assert result == ('No transactions found.', [])
- # feature created by Bing Han 
+
+
+# feature created by Bing Han
 def test_show_transactions_nonempty(get_transaction):
     get_transaction.add_transaction('2023-03-26', 'Groceries', 100.0, 1)
     get_transaction.add_transaction('2023-03-27', 'Gasoline', 50.0, 2)
@@ -73,7 +80,8 @@ def test_show_transactions_nonempty(get_transaction):
     assert result[1][3] == '2023-03-27'
     assert result[1][4] == 2
 
- # feature created by Bing Han 
+
+# feature created by Bing Han
 def test_add_show_transaction(get_transaction):
     params_lst = [
         ("2022-03-26", "Snack", 5.99, 1),
@@ -94,20 +102,20 @@ def test_add_show_transaction(get_transaction):
     assert expected == actual
 
 
- # feature created by Bing Han 
+# feature created by Bing Han
 def test_add_delete_show_transaction(get_transaction):
- def test_add_delete_show_transaction(get_transaction):
-     params_lst = [("2022-03-26", "Snack", 5.99, 1),
-                   ("2022-03-26", "Food", 7.99, 2),
-                   ("2022-03-26", "Snack", 9.99, 1),
-                   ("2022-03-26", "Food", 10.99, 2)]
-     for params in params_lst:
-         get_transaction.add_transaction(*params)
+    def test_add_delete_show_transaction(get_transaction):
+        params_lst = [("2022-03-26", "Snack", 5.99, 1),
+                      ("2022-03-26", "Food", 7.99, 2),
+                      ("2022-03-26", "Snack", 9.99, 1),
+                      ("2022-03-26", "Food", 10.99, 2)]
+        for params in params_lst:
+            get_transaction.add_transaction(*params)
 
-     get_transaction.delete_transaction(2)
-     actual = get_transaction.show_transactions()
-     expected = [(params[3],) + params for i, params in enumerate(params_lst) if i != 1]
-     assert expected == actual
+        get_transaction.delete_transaction(2)
+        actual = get_transaction.show_transactions()
+        expected = [(params[3],) + params for i, params in enumerate(params_lst) if i != 1]
+        assert expected == actual
 
 
 # feature created by Feifan He
@@ -154,6 +162,7 @@ def test_summarize_transactions_by_year(get_transactions_for_summarize):
     actual = transaction.summarize_transactions_by_year()
     assert expected == actual
 
+
 # feature created by Tianling Hou
 @pytest.fixture
 def transaction_test():
@@ -174,6 +183,7 @@ def transaction_test():
     for params in params_lst:
         transaction.add_transaction(*params)
     return transaction
+
 
 def test_summarize_transactions_by_category(transaction_test):
     transaction = transaction_test
