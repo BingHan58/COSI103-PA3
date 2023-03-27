@@ -150,17 +150,15 @@ class Transaction:
         # Iterate through each category and retrieve its transactions
         for category in categories:
             category_id = category[0]
+            print(category_id)
             category_name = category[1]
             transactions = self.run_query(
                 "SELECT * FROM transactions WHERE category_id = ?", (category_id,))
-            # total_amount = sum([transaction[2] for transaction in transactions])
-            total_amount = sum(transaction['amount'] for transaction in transactions)
-
+            total_amount = sum([transaction[2] for transaction in transactions])
             # Add summary string to list
             summary = (f"Category: {category_name}\n"
                        f"Total amount spent: {total_amount}\n"
                        f"Number of transactions: {len(transactions)}\n")
-
             summaries.append(summary)
         return summaries
 

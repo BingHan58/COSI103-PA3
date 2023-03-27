@@ -161,22 +161,31 @@ def transaction_test():
         os.remove(DB_FILE_PATH)
     # Initialize Transaction object and create tables
     transaction = Transaction()
+    params_lst = [("2023-03-01", "Groceries", 50, 1),
+                  ("2023-03-02", "Gas", 30.11, 2),
+                  ("2023-03-03", "Coffee", 5.2, 3)]
+    categories_lst = [("Food",),
+                      ("Car",),
+                      ("Drink",)]
+    # Add categories to the database
+    for category in categories_lst:
+        transaction.add_category(*category)
     # Add a few transactions to the database
-    transaction.add_transaction("2023-03-01", "Groceries", 50, 1)
-    transaction.add_transaction("2023-03-02", "Gas", 30.11, 2)
-    transaction.add_transaction("2023-03-03", "Coffee", 5.2, 3)
+    for params in params_lst:
+        transaction.add_transaction(*params)
     return transaction
+
 def test_summarize_transactions_by_category(transaction_test):
-    # Test the summarize_transactions_by_category method
-    result = transaction_test.summarize_transactions_by_category()
+    transaction = transaction_test
+    actual = transaction.summarize_transactions_by_category()
     # Assert that the result is a list of strings
-    assert isinstance(result, list)
-    for summary in result:
+    assert isinstance(actual, list)
+    for summary in actual:
         assert isinstance(summary, str)
     # Assert that the summary strings contain the correct information
     expected_summaries = [
-        "Category: Groceries\nTotal amount spent: 50\nNumber of transactions: 1\n",
-        "Category: Gas\nTotal amount spent: 30.11\nNumber of transactions: 1\n",
-        "Category: Coffee\nTotal amount spent: 5.2\nNumber of transactions: 1\n"
+        "Category: Food\nTotal amount spent: 50.0\nNumber of transactions: 1\n",
+        "Category: Car\nTotal amount spent: 30.11\nNumber of transactions: 1\n",
+        "Category: Drink\nTotal amount spent: 5.2\nNumber of transactions: 1\n"
     ]
-    assert result == expected_summaries
+    assert actual == expected_summaries
