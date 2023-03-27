@@ -126,7 +126,9 @@ def test_add_delete_show_transaction(get_transaction):
 
     get_transaction.delete_transaction(2)
     actual = get_transaction.show_transactions()
-    expected = [(1, '2022-03-26', 'Snack', 5.99, 1), (3, '2022-03-26', 'Snack', 9.99, 1), (4, '2022-03-26', 'Food', 10.99, 2)]
+    expected = [(1, '2022-03-26', 'Snack', 5.99, 1),
+                (3, '2022-03-26', 'Snack', 9.99, 1),
+                (4, '2022-03-26', 'Food', 10.99, 2)]
     assert expected == actual
 
 
