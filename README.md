@@ -61,13 +61,13 @@ Categories:
 2. snake
 3. fruit
 ```
-If the user eneter 2, the program will add a category
+If the user enter 2, the program will add a category
 ```
 Enter an option: 2 food
 Enter an option: 2 snake
 Enter an option: 2 fruit
 ```
-If the user eneter 3, the program will modify category
+If the user enter 3, the program will modify category
 ```
 Enter an option: 3 food veg
 
@@ -77,7 +77,7 @@ Categories:
 2. snake
 3. fruit
 ```
-If the user eneter 4, the program will show transactions
+If the user enter 4, the program will show transactions
 ```
 Enter an option: 4
 (1, 'Food', 103.0, '2022-03-28', 2)
@@ -89,7 +89,7 @@ Enter an option: 4
 (7, 'Snake', 45.22, '2023-12-12', 4)
 (8, 'Coffee', 42.1, '2023-12-12', 3)
 ```
-If the user eneter 5, the program will add transaction
+If the user enter 5, the program will add transaction
 ```
 
 Enter an option: 5 2022-03-28 Food 103 2 
@@ -134,7 +134,7 @@ Enter an option: 4
 (7, 'Snake', 45.22, '2023-12-12', 4)
 (8, 'Coffee', 42.1, '2023-12-12', 3)
 ```
-If the user eneter 6, the program will delete transaction
+If the user enter 6, the program will delete transaction
 ```
 Enter an option: 4
 (1, 'Food', 103.0, '2022-03-28', 2)
@@ -174,7 +174,7 @@ Enter an option: 7
 ('2022-05-21', 353.2)
 ('2023-12-12', 87.32)
 ```
-If the user eneter 8, the program will summarize transactions by month
+If the user enter 8, the program will summarize transactions by month
 ```
 Enter an option: 4
 (2, 'Grocery', 78.87, '2022-03-28', 1)
@@ -204,20 +204,19 @@ Enter an option: 9
 ('2022', 511.83)
 ('2023', 87.32)
 ```
-If the user eneter 10, the program will summarize transactions by category
+If the user enter 10, the program will summarize transactions by category
 ```
 
-Enter an option: 4
+Enter an option: 4 
 (1, 'carwash', 44.0, '2022-03-28', 2)
 (2, 'food', 34.22, '2022-03-28', 1)
 (3, 'Coffee', 353.2, '2022-05-21', 3)
-(4, 'Snake', 45.22, '2023-12-12', 1)
-(5, 'Coffee', 42.1, '2023-12-12', 3)
-(6, 'Grocery', 12.53, '2022-03-28', 1)
+(4, 'Snacks', 45.22, '2023-12-12', 1)
+----------------------------------------
 
 
 Enter an option: 10
-[('Food', 50.0), ('Car', 30.11), ('Drink', 5.2)]
+[('Food', 79.44), ('Car', 44.0), ('Drink', 353.2)]
 
 
 ```
