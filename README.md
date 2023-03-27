@@ -19,8 +19,17 @@ In addition, the ORM includes a method run_query() that connects to the database
 ***** Pylint Script *****
 ```
 pylint transaction.py
+
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.86/10, +0.14)
 ```
 
+```
+pylint tracker.py
+
+------------------------------------------------------------------
+Your code has been rated at 9.92/10 (previous run: 9.83/10, +0.08)
+```
 ***** run pytest  *****
 ```
 pytest -v
@@ -29,7 +38,7 @@ pytest -v
 ============================================================== test session starts ==============================================================
 platform darwin -- Python 3.11.2, pytest-7.2.2, pluggy-1.0.0 -- /Library/Frameworks/Python.framework/Versions/3.11/bin/python3
 cachedir: .pytest_cache
-rootdir: /Users/icey/Desktop/COSI103-PA3-5
+rootdir: /Users/icey/Desktop/COSI103-PA3-6
 plugins: anyio-3.6.2
 collected 11 items                                                                                                                              
 
@@ -45,8 +54,7 @@ test_transaction.py::test_summarize_transactions_by_month PASSED                
 test_transaction.py::test_summarize_transactions_by_year PASSED                                                                           [ 90%]
 test_transaction.py::test_summarize_transactions_by_category PASSED                                                                       [100%]
 
-============================================================== 11 passed in 0.13s ===============================================================
-```
+============================================================== 11 passed in 0.17s =======================================================
 
 ***** How to run tracker *****
 ```
