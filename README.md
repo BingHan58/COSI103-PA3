@@ -180,11 +180,29 @@ Enter an option: 9
 If the user eneter 10, the program will summarize transactions by category
 ```
 
+Enter an option: 4
+(1, 'carwash', 44.0, '2022-03-28', 2)
+(2, 'food', 34.22, '2022-03-28', 1)
+(3, 'Coffee', 353.2, '2022-05-21', 3)
+(4, 'Snake', 45.22, '2023-12-12', 1)
+(5, 'Coffee', 42.1, '2023-12-12', 3)
+(6, 'Grocery', 12.53, '2022-03-28', 1)
+----------------------------------------
 
+Enter an option: 10
+Category: Food
+Total amount spent: 91.97
+Number of transactions: 3
 
+Category: Car
+Total amount spent: 44.0
+Number of transactions: 1
+
+Category: Drink
+Total amount spent: 395.3
+Number of transactions: 2
 
 ```
-
 
 If the user eneter 11, the program will print this menu
 ```
