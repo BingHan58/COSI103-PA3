@@ -21,6 +21,33 @@ In addition, the ORM includes a method run_query() that connects to the database
 pylint transaction.py
 ```
 
+***** pytest Script *****
+```
+pytest -v
+```
+```
+============================================================== test session starts ==============================================================
+platform darwin -- Python 3.11.2, pytest-7.2.2, pluggy-1.0.0 -- /Library/Frameworks/Python.framework/Versions/3.11/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/icey/Desktop/COSI103-PA3-5
+plugins: anyio-3.6.2
+collected 11 items                                                                                                                              
+
+test_transaction.py::test_show_categories PASSED                                                                                          [  9%]
+test_transaction.py::test_add_category PASSED                                                                                             [ 18%]
+test_transaction.py::test_modify_category PASSED                                                                                          [ 27%]
+test_transaction.py::test_show_transactions_empty PASSED                                                                                  [ 36%]
+test_transaction.py::test_show_transactions_nonempty PASSED                                                                               [ 45%]
+test_transaction.py::test_add_show_transaction PASSED                                                                                     [ 54%]
+test_transaction.py::test_add_delete_show_transaction PASSED                                                                              [ 63%]
+test_transaction.py::test_summarize_transactions_by_date PASSED                                                                           [ 72%]
+test_transaction.py::test_summarize_transactions_by_month PASSED                                                                          [ 81%]
+test_transaction.py::test_summarize_transactions_by_year PASSED                                                                           [ 90%]
+test_transaction.py::test_summarize_transactions_by_category PASSED                                                                       [100%]
+
+============================================================== 11 passed in 0.13s ===============================================================
+```
+
 ***** How to run tracker *****
 ```
 python3 tracker.py
