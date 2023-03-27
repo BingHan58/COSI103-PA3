@@ -158,7 +158,7 @@ Enter an option: 4
 (7, 'Snake', 45.22, '2023-12-12', 4)
 (8, 'Coffee', 42.1, '2023-12-12', 3)
 ```
-If the user eneter 7, the program will summarize transactions by date
+If the user enter 7, the program will summarize transactions by date
 ```
 Enter an option: 4
 (2, 'Grocery', 78.87, '2022-03-28', 1)
@@ -214,20 +214,11 @@ Enter an option: 4
 (4, 'Snake', 45.22, '2023-12-12', 1)
 (5, 'Coffee', 42.1, '2023-12-12', 3)
 (6, 'Grocery', 12.53, '2022-03-28', 1)
-----------------------------------------
+
 
 Enter an option: 10
-Category: Food
-Total amount spent: 91.97
-Number of transactions: 3
+[('Food', 50.0), ('Car', 30.11), ('Drink', 5.2)]
 
-Category: Car
-Total amount spent: 44.0
-Number of transactions: 1
-
-Category: Drink
-Total amount spent: 395.3
-Number of transactions: 2
 
 ```
 
