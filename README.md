@@ -71,6 +71,7 @@ python3 tracker.py
 ```
 If the user enter 0, the program will quit
 If the user eneter 1, the program will show all categories
+
 ```
 Enter an option: 1
 Categories:
@@ -79,6 +80,7 @@ Categories:
 3. fruit
 ```
 If the user enter 2, the program will add a category
+
 ```
 Enter an option: 2 food
 Enter an option: 2 snake
