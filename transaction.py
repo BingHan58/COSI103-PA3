@@ -150,7 +150,6 @@ class Transaction:
         # Iterate through each category and retrieve its transactions
         for category in categories:
             category_id = category[0]
-            print(category_id)
             category_name = category[1]
             transactions = self.run_query(
                 "SELECT * FROM transactions WHERE category_id = ?", (category_id,))
