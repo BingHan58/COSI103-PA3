@@ -20,6 +20,7 @@ import re
 
 DB_FILE_PATH = 'tracker.db'
 
+
 # features created by Tianling Hou
 def to_dict(self, row):
     '''
@@ -31,10 +32,12 @@ def to_dict(self, row):
         values[5] = self.run_query("SELECT name FROM categories WHERE id = ?", (values[4],))[0][0]
     return dict(zip(keys, values))
 
+
 class Transaction:
     """
     An ORM module that interacts with the tracker.db database.
     """
+
     # features created by Tianling Hou
     def __init__(self):
         self.run_query('''CREATE TABLE IF NOT EXISTS categories (
@@ -91,21 +94,16 @@ class Transaction:
         return rows
 
     # features created by Bing Han, modified by Tianling
-    def add_transaction(self, date, description, amount, category_id):
+    def add_transaction(self, date: str, description: str, amount: float, category_id: int):
         """
         Add a new transaction to the transactions table.
         """
         if not re.match(r"\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])", date):
             raise ValueError("Invalid date format. Date should be in the format YYYY-MM-DD.")
-        if not isinstance(description, str):
-            raise TypeError("Description should be a string.")
-        if not isinstance(amount, int) and not isinstance(amount, float):
-            raise TypeError("Amount should be a number.")
-        if not isinstance(category_id, int):
-            raise TypeError("Category ID should be an integer.")
+
         return self.run_query(
             "INSERT INTO transactions (date, description, amount, category_id) VALUES (?, ?, ?, ?)",
-                            (date, description, amount, category_id))
+            (date, description, amount, category_id))
 
     # features created by Bing Han
     def delete_transaction(self, transaction_id):
@@ -128,7 +126,7 @@ class Transaction:
         """
         return self.run_query(
             "SELECT strftime('%Y-%m', date) AS month, SUM(amount) FROM transactions GROUP BY month",
-                             ())
+            ())
 
     # feature created by Feifan He
     def summarize_transactions_by_year(self):

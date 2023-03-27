@@ -1,3 +1,6 @@
+"""
+This module is a command-line interface that can help users to track expenses and generate reports.
+"""
 import sys
 from transaction import Transaction
 
@@ -57,11 +60,9 @@ def process_args(tracker, arglist):
             try:
                 tracker.add_transaction(arglist[1], arglist[2], float(arglist[3]), int(arglist[4]))
                 print("Transaction added successfully.")
-            except TypeError as e:
-                print(str(e))
-            except Exception as e:
+            except ValueError as exception:
                 print("An error occurred while adding the transaction.")
-                print(str(e))
+                print(str(exception))
     elif arglist[0] == "6":
         if len(arglist) < 2:
             print("Not enough arguments for 'delete transaction'")
