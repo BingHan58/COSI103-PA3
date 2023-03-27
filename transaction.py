@@ -17,6 +17,7 @@ and ignores any errors that may occur during the database interaction.
 
 import sqlite3
 import re
+import os
 
 DB_FILE_PATH = 'tracker.db'
 
@@ -37,6 +38,8 @@ class Transaction:
     """
     # features created by Tianling Hou
     def __init__(self):
+        if os.path.exists(DB_FILE_PATH):
+            os.remove(DB_FILE_PATH)
         self.run_query('''CREATE TABLE IF NOT EXISTS categories (
                             id INTEGER PRIMARY KEY,
                             name TEXT UNIQUE NOT NULL)''', ())
