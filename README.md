@@ -21,7 +21,7 @@ In addition, the ORM includes a method run_query() that connects to the database
 pylint transaction.py
 ```
 
-***** pytest Script *****
+***** run pytest  *****
 ```
 pytest -v
 ```
