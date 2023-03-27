@@ -45,20 +45,14 @@ def process_args(tracker, arglist):
         tracker.add_category(arglist[1])
     elif arglist[0] == "3":
         tracker.modify_category(arglist[1], arglist[2])
-    elif arglist[0] == "4":
-        transactions = tracker.show_transactions()
-        if transactions[0] == "No transactions found.":
-            print(transactions[0])
-        else:
-            for transaction in transactions:
-                print(transaction)
     elif arglist[0] == "5":
         if len(arglist) < 5:
             print("Not enough arguments for 'add transaction'")
             print_usage()
         else:
             try:
-                tracker.add_transaction(arglist[1], arglist[2], float(arglist[3]), int(arglist[4]))
+                tracker.add_transaction(arglist[1], arglist[2],
+                                        float(arglist[3]), int(arglist[4]))
                 print("Transaction added successfully.")
             except ValueError as exception:
                 print("An error occurred while adding the transaction.")
@@ -69,21 +63,21 @@ def process_args(tracker, arglist):
             print_usage()
         else:
             tracker.delete_transaction(arglist[1])
-    elif arglist[0] == "7":
-        results = tracker.summarize_transactions_by_date()
-        for result in results:
-            print(result)
-    elif arglist[0] == "8":
-        results = tracker.summarize_transactions_by_month()
-        for result in results:
-            print(result)
-    elif arglist[0] == "9":
-        results = tracker.summarize_transactions_by_year()
-        for result in results:
-            print(result)
-    elif arglist[0] == "10":
-        results = tracker.summarize_transactions_by_category()
-        print(results)
+    elif arglist[0] in ['4', '7', '8', '9', '10']:
+        action = {
+            '4': tracker.show_transactions,
+            '7': tracker.summarize_transactions_by_date,
+            '8': tracker.summarize_transactions_by_month,
+            '9': tracker.summarize_transactions_by_year,
+            '10': tracker.summarize_transactions_by_category,
+        }
+
+        results = action[arglist[0]]()
+        if results:
+            for row in results:
+                print(row)
+        else:
+            print('empty')
     elif arglist[0] == "11":
         print_usage()
     else:
