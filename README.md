@@ -25,10 +25,12 @@ Your code has been rated at 10.00/10 (previous run: 9.86/10, +0.14)
 ```
 
 ```
-pylint tracker.py
+pylint tracker.py transaction.py
+************* Module tracker
+tracker.py:28:0: R0912: Too many branches (22/12) (too-many-branches)
 
-------------------------------------------------------------------
-Your code has been rated at 9.92/10 (previous run: 9.83/10, +0.08)
+-------------------------------------------------------------------
+Your code has been rated at 9.92/10 (previous run: 10.00/10, -0.08)
 ```
 ***** run pytest  *****
 ```
