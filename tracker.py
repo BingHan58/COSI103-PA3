@@ -82,8 +82,7 @@ def process_args(tracker, arglist):
             print(result)
     elif arglist[0] == "10":
         results = tracker.summarize_transactions_by_category()
-        for result in results:
-            print(result)
+        print(results)
     elif arglist[0] == "11":
         print_usage()
     else:

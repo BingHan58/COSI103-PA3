@@ -17,7 +17,6 @@ and ignores any errors that may occur during the database interaction.
 
 import sqlite3
 import re
-import os
 
 DB_FILE_PATH = 'tracker.db'
 
@@ -38,8 +37,6 @@ class Transaction:
     """
     # features created by Tianling Hou
     def __init__(self):
-        if os.path.exists(DB_FILE_PATH):
-            os.remove(DB_FILE_PATH)
         self.run_query('''CREATE TABLE IF NOT EXISTS categories (
                             id INTEGER PRIMARY KEY,
                             name TEXT UNIQUE NOT NULL)''', ())
@@ -142,27 +139,39 @@ class Transaction:
             "SELECT strftime('%Y', date) AS year, SUM(amount) FROM transactions GROUP BY year", ())
 
     # feature created by Tianling Hou
+    # def summarize_transactions_by_category(self):
+    #     """
+    #     Summarize transactions by category.
+    #     """
+    #     # Get all categories from the database
+    #     categories = self.run_query("SELECT * FROM categories", ())
+    #     # Initialize list of summary strings
+    #     summaries = []
+    #     # Iterate through each category and retrieve its transactions
+    #     for category in categories:
+    #         category_id = category[0]
+    #         category_name = category[1]
+    #         transactions = self.run_query(
+    #             "SELECT * FROM transactions WHERE category_id = ?", (category_id,))
+    #         total_amount = sum([transaction[2] for transaction in transactions])
+    #         # Add summary string to list
+    #         summary = (f"Category: {category_name}\n"
+    #                    f"Total amount spent: {total_amount}\n"
+    #                    f"Number of transactions: {len(transactions)}\n")
+    #         summaries.append(summary)
+    #     return summaries
     def summarize_transactions_by_category(self):
         """
         Summarize transactions by category.
         """
-        # Get all categories from the database
-        categories = self.run_query("SELECT * FROM categories", ())
-        # Initialize list of summary strings
-        summaries = []
-        # Iterate through each category and retrieve its transactions
-        for category in categories:
-            category_id = category[0]
-            category_name = category[1]
-            transactions = self.run_query(
-                "SELECT * FROM transactions WHERE category_id = ?", (category_id,))
-            total_amount = sum([transaction[2] for transaction in transactions])
-            # Add summary string to list
-            summary = (f"Category: {category_name}\n"
-                       f"Total amount spent: {total_amount}\n"
-                       f"Number of transactions: {len(transactions)}\n")
-            summaries.append(summary)
-        return summaries
+        # Get the summary of transactions by category from the database
+        result = self.run_query("""
+            select categories.name category_name, sum(amount) total
+            from categories, transactions
+            where categories.id = transactions.category_id
+            group by categories.id
+        """, ())
+        return result
 
     # feature modified by Tianling Hou
     def run_query(self, query, params, fetch_names=False):
