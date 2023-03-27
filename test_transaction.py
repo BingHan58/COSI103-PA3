@@ -178,14 +178,6 @@ def transaction_test():
 def test_summarize_transactions_by_category(transaction_test):
     transaction = transaction_test
     actual = transaction.summarize_transactions_by_category()
-    # Assert that the result is a list of strings
-    assert isinstance(actual, list)
-    for summary in actual:
-        assert isinstance(summary, str)
     # Assert that the summary strings contain the correct information
-    expected_summaries = [
-        "Category: Food\nTotal amount spent: 50.0\nNumber of transactions: 1\n",
-        "Category: Car\nTotal amount spent: 30.11\nNumber of transactions: 1\n",
-        "Category: Drink\nTotal amount spent: 5.2\nNumber of transactions: 1\n"
-    ]
+    expected_summaries = [('Food', 50.0), ('Car', 30.11), ('Drink', 5.2)]
     assert actual == expected_summaries
