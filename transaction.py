@@ -137,28 +137,6 @@ class Transaction:
         return self.run_query(
             "SELECT strftime('%Y', date) AS year, SUM(amount) FROM transactions GROUP BY year", ())
 
-    # feature created by Tianling Hou
-    # def summarize_transactions_by_category(self):
-    #     """
-    #     Summarize transactions by category.
-    #     """
-    #     # Get all categories from the database
-    #     categories = self.run_query("SELECT * FROM categories", ())
-    #     # Initialize list of summary strings
-    #     summaries = []
-    #     # Iterate through each category and retrieve its transactions
-    #     for category in categories:
-    #         category_id = category[0]
-    #         category_name = category[1]
-    #         transactions = self.run_query(
-    #             "SELECT * FROM transactions WHERE category_id = ?", (category_id,))
-    #         total_amount = sum([transaction[2] for transaction in transactions])
-    #         # Add summary string to list
-    #         summary = (f"Category: {category_name}\n"
-    #                    f"Total amount spent: {total_amount}\n"
-    #                    f"Number of transactions: {len(transactions)}\n")
-    #         summaries.append(summary)
-    #     return summaries
     def summarize_transactions_by_category(self):
         """
         Summarize transactions by category.
