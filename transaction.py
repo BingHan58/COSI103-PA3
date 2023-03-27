@@ -55,7 +55,7 @@ class Transaction:
         # Initialize categories list
         self.categories = self.run_query("SELECT * FROM categories", ())
 
-    # features created by Yingshan Hu, modified by Tianling
+    # features created by Yingshan Hu, modified by Tianling Hou
     def show_categories(self):
         """
         Return a list of dictionaries representing all categories in the categories table.
@@ -63,7 +63,7 @@ class Transaction:
         rows = self.run_query("SELECT id, name FROM categories", ())
         return rows
 
-    # features created by Yingshan Hu, modified by Tianling
+    # features created by Yingshan Hu, modified by Tianling Hou
     def add_category(self, name):
         """
         Add a new category to the categories table.
@@ -83,7 +83,7 @@ class Transaction:
         """
         self.run_query("UPDATE categories SET name = ? WHERE name = ?", (new_name, old_name))
 
-    # features created by Bing Han, modified by Tianling
+    # features created by Bing Han, modified by Tianling Hou
     def show_transactions(self):
         """
         Return a list of dictionaries representing all transactions in the transactions table.
@@ -93,7 +93,7 @@ class Transaction:
             return "No transactions found.", []
         return rows
 
-    # features created by Bing Han, modified by Tianling
+    # features created by Bing Han, modified by Tianling Hou
     def add_transaction(self, date: str, description: str, amount: float, category_id: int):
         """
         Add a new transaction to the transactions table.
