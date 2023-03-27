@@ -54,80 +54,128 @@ If the user eneter 4, the program will show transactions
 ```
 Enter an option: 4
 (1, 'Food', 103.0, '2022-03-28', 2)
-(2, 'Grocery', 100.0, '2022-03-28', 1)
+(2, 'Grocery', 78.87, '2022-03-28', 1)
+(3, 'Grocery', 12.53, '2022-03-28', 1)
+(4, 'Food', 67.23, '2022-04-09', 2)
+(5, 'Coffee', 353.2, '2022-05-21', 3)
+(6, 'Sanke', 13.45, '2022-05-12', 4)
+(7, 'Snake', 45.22, '2023-12-12', 4)
+(8, 'Coffee', 42.1, '2023-12-12', 3)
 ```
 If the user eneter 5, the program will add transaction
 ```
-Enter an option: 5 2022-03-28 Food 103 2                    
+
+Enter an option: 5 2022-03-28 Food 103 2 
 Transaction added successfully.
 ----------------------------------------
 
-Enter an option: 5 2022-03-28 Grocery 100 1
+Enter an option: 5 2022-03-28 Grocery 178.87 1
 Transaction added successfully.
 ----------------------------------------
+
+Enter an option: 5 2022-03-28 Grocery 12.53 1
+Transaction added successfully.
+----------------------------------------
+
+Enter an option: 5 2022-04-09 Food 67.23 2     
+Transaction added successfully.
+----------------------------------------
+
+Enter an option: 5 2022-05-21 Coffee 353.2 3
+Transaction added successfully.
+----------------------------------------
+
+Enter an option: 5 2022-05-12 Sanke 13.45 4 
+Transaction added successfully.
+----------------------------------------
+
+Enter an option: 5 2023-12-12 Snake 45.22 4 
+Transaction added successfully.
+----------------------------------------
+
+Enter an option: 5 2023-12-12 Coffee 42.1 3
+Transaction added successfully.
+
 
 Enter an option: 4
 (1, 'Food', 103.0, '2022-03-28', 2)
-(2, 'Grocery', 100.0, '2022-03-28', 1)
+(2, 'Grocery', 78.87, '2022-03-28', 1)
+(3, 'Grocery', 12.53, '2022-03-28', 1)
+(4, 'Food', 67.23, '2022-04-09', 2)
+(5, 'Coffee', 353.2, '2022-05-21', 3)
+(6, 'Sanke', 13.45, '2022-05-12', 4)
+(7, 'Snake', 45.22, '2023-12-12', 4)
+(8, 'Coffee', 42.1, '2023-12-12', 3)
 ```
 If the user eneter 6, the program will delete transaction
 ```
 Enter an option: 4
 (1, 'Food', 103.0, '2022-03-28', 2)
-(2, 'Grocery', 100.0, '2022-03-28', 1)
+(2, 'Grocery', 78.87, '2022-03-28', 1)
+(3, 'Grocery', 12.53, '2022-03-28', 1)
+(4, 'Food', 67.23, '2022-04-09', 2)
+(5, 'Coffee', 353.2, '2022-05-21', 3)
+(6, 'Sanke', 13.45, '2022-05-12', 4)
+(7, 'Snake', 45.22, '2023-12-12', 4)
+(8, 'Coffee', 42.1, '2023-12-12', 3)
 
 Enter an option: 6 1
 
+Enter an option: 6 6
+
 Enter an option: 4
-(2, 'Grocery', 100.0, '2022-03-28', 1)
+(2, 'Grocery', 78.87, '2022-03-28', 1)
+(3, 'Grocery', 12.53, '2022-03-28', 1)
+(4, 'Food', 67.23, '2022-04-09', 2)
+(5, 'Coffee', 353.2, '2022-05-21', 3)
+(7, 'Snake', 45.22, '2023-12-12', 4)
+(8, 'Coffee', 42.1, '2023-12-12', 3)
 ```
 If the user eneter 7, the program will summarize transactions by date
 ```
 Enter an option: 4
-(2, 'Grocery', 100.0, '2022-03-28', 1)
-(3, 'snake', 12.0, '2022-03-28', 3)
-(4, 'food', 2.0, '2022-03-28', 2)
-(5, 'food', 3.0, '2022-04-23', 2)
-(6, 'food', 9.0, '2022-04-29', 2)
-(7, 'snake', 18.0, '2022-05-01', 2)
-
+(2, 'Grocery', 78.87, '2022-03-28', 1)
+(3, 'Grocery', 12.53, '2022-03-28', 1)
+(4, 'Food', 67.23, '2022-04-09', 2)
+(5, 'Coffee', 353.2, '2022-05-21', 3)
+(7, 'Snake', 45.22, '2023-12-12', 4)
+(8, 'Coffee', 42.1, '2023-12-12', 3)
 
 Enter an option: 7
-('2022-03-28', 114.0)
-('2022-04-23', 3.0)
-('2022-04-29', 9.0)
-('2022-05-01', 18.0)
+('2022-03-28', 91.4)
+('2022-04-09', 67.23)
+('2022-05-21', 353.2)
+('2023-12-12', 87.32)
 ```
 If the user eneter 8, the program will summarize transactions by month
 ```
 Enter an option: 4
-(2, 'Grocery', 100.0, '2022-03-28', 1)
-(3, 'snake', 12.0, '2022-03-28', 3)
-(4, 'food', 2.0, '2022-03-28', 2)
-(5, 'food', 3.0, '2022-04-23', 2)
-(6, 'food', 9.0, '2022-04-29', 2)
-(7, 'snake', 18.0, '2022-05-01', 2)
-
+(2, 'Grocery', 78.87, '2022-03-28', 1)
+(3, 'Grocery', 12.53, '2022-03-28', 1)
+(4, 'Food', 67.23, '2022-04-09', 2)
+(5, 'Coffee', 353.2, '2022-05-21', 3)
+(7, 'Snake', 45.22, '2023-12-12', 4)
+(8, 'Coffee', 42.1, '2023-12-12', 3)
 
 Enter an option: 8
-('2022-03', 114.0)
-('2022-04', 12.0)
-('2022-05', 18.0)
+('2022-03', 91.4)
+('2022-04', 67.23)
+('2022-05', 353.2)
+('2023-12', 87.32)
 ```
 If the user eneter 9, the program will summarize transactions by month
 ```
 Enter an option: 4
-(2, 'Grocery', 100.0, '2022-03-28', 1)
-(3, 'snake', 12.0, '2022-03-28', 3)
-(4, 'food', 2.0, '2022-03-28', 2)
-(5, 'food', 3.0, '2022-04-23', 2)
-(6, 'food', 9.0, '2022-04-29', 2)
-(7, 'snake', 18.0, '2022-05-01', 2)
-(8, 'snake', 12.0, '2023-09-01', 2)
+(2, 'Grocery', 78.87, '2022-03-28', 1)
+(3, 'Grocery', 12.53, '2022-03-28', 1)
+(4, 'Food', 67.23, '2022-04-09', 2)
+(5, 'Coffee', 353.2, '2022-05-21', 3)
+(7, 'Snake', 45.22, '2023-12-12', 4)
+(8, 'Coffee', 42.1, '2023-12-12', 3)
 
 Enter an option: 9
-('2022', 144.0)
-('2023', 12.0)
+('2022', 511.83)
+('2023', 87.32)
 ```
 If the user eneter 10, the program will summarize transactions by category
 ```
@@ -155,6 +203,7 @@ Options:
      10. summarize transactions by category
      11. print this menu
 ```     
+
 ***** PA03 Assignment Introduction *****
 
 PA03 - finance tracker - using SQL, pytest, and pylint
