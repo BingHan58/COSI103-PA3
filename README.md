@@ -64,14 +64,13 @@ test_transaction.py::test_summarize_transactions_by_year PASSED                 
 test_transaction.py::test_summarize_transactions_by_category PASSED                                                                       [100%]
 
 ============================================================== 11 passed in 0.17s =======================================================
-
+```
 ***** How to run tracker *****
 ```
 python3 tracker.py
 ```
 If the user enter 0, the program will quit
 If the user eneter 1, the program will show all categories
-
 ```
 Enter an option: 1
 Categories:
