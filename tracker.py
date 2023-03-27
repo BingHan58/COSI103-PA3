@@ -55,7 +55,7 @@ def process_args(tracker, arglist):
             print_usage()
         else:
             try:
-                tracker.add_transaction(arglist[1], arglist[2], int(arglist[3]), int(arglist[4]))
+                tracker.add_transaction(arglist[1], arglist[2], float(arglist[3]), int(arglist[4]))
                 print("Transaction added successfully.")
             except TypeError as e:
                 print(str(e))

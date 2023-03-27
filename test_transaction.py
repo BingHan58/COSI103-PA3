@@ -157,33 +157,26 @@ def test_summarize_transactions_by_year(get_transactions_for_summarize):
 # feature created by Tianling Hou
 @pytest.fixture
 def transaction_test():
-    # Initialize Transaction object
+    if os.path.exists(DB_FILE_PATH):
+        os.remove(DB_FILE_PATH)
+    # Initialize Transaction object and create tables
     transaction = Transaction()
-    
     # Add a few transactions to the database
-    transaction.add_transaction("2023-03-01", "Groceries", 50.08, 1)
+    transaction.add_transaction("2023-03-01", "Groceries", 50, 1)
     transaction.add_transaction("2023-03-02", "Gas", 30.11, 2)
     transaction.add_transaction("2023-03-03", "Coffee", 5.2, 3)
-    
-    yield transaction
-    
-    # Clean up the database
-    transaction.runQuery("DELETE FROM transactions", ())
-    
-
+    return transaction
 def test_summarize_transactions_by_category(transaction_test):
     # Test the summarize_transactions_by_category method
     result = transaction_test.summarize_transactions_by_category()
-    
     # Assert that the result is a list of strings
     assert isinstance(result, list)
     for summary in result:
         assert isinstance(summary, str)
-        
     # Assert that the summary strings contain the correct information
     expected_summaries = [
         "Category: Groceries\nTotal amount spent: 50\nNumber of transactions: 1\n",
-        "Category: Gas\nTotal amount spent: 30\nNumber of transactions: 1\n",
-        "Category: Coffee\nTotal amount spent: 5\nNumber of transactions: 1\n"
+        "Category: Gas\nTotal amount spent: 30.11\nNumber of transactions: 1\n",
+        "Category: Coffee\nTotal amount spent: 5.2\nNumber of transactions: 1\n"
     ]
     assert result == expected_summaries

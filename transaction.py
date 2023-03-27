@@ -81,8 +81,6 @@ class Transaction:
         self.run_query("UPDATE categories SET name = ? WHERE name = ?", (new_name, old_name))
 
     # features created by Bing Han, modified by Tianling
-    # def show_transactions(self):
-    #     return self.run_query("SELECT * FROM transactions", ())
     def show_transactions(self):
         """
         Return a list of dictionaries representing all transactions in the transactions table.
@@ -101,16 +99,13 @@ class Transaction:
             raise ValueError("Invalid date format. Date should be in the format YYYY-MM-DD.")
         if not isinstance(description, str):
             raise TypeError("Description should be a string.")
-        if not isinstance(amount, (float, int)):
+        if not isinstance(amount, int) and not isinstance(amount, float):
             raise TypeError("Amount should be a number.")
         if not isinstance(category_id, int):
             raise TypeError("Category ID should be an integer.")
         return self.run_query(
             "INSERT INTO transactions (date, description, amount, category_id) VALUES (?, ?, ?, ?)",
                             (date, description, amount, category_id))
-        # return self.run_query(
-        #"INSERT INTO transactions (date, description, amount, category_id) VALUES (?, ?, ?, ?)",
-        #               (date, description, amount, category_id))
 
     # features created by Bing Han
     def delete_transaction(self, transaction_id):
